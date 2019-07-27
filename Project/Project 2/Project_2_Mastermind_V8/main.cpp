@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Minkyu R. Park
  * Created on July 17, 2019, 08:30 PM
- * Purpose:  Project 2: Mastermind V7
+ * Purpose:  Project 2: Mastermind V8
  */
 
 //System Libraries
@@ -14,6 +14,7 @@
 using namespace std;
 
 //User Libraries
+#include "Number.h"
 enum colors {
     RED, BLUE, GREEN, YELLOW, ORANGE, //ENUM COLORS
     PURPLE
@@ -26,55 +27,13 @@ struct guesses{
 
 //Template
 template<class T>
-T EndTurn(T a){
-    if (a == 10){
-        return 0;
-    }
+T timer(T t){
+    int time;
+    time=t+1;
+    return time;
 }
 
 //Classes
-class Number{
-private:
-    int number1, number2, number3, number4, number5;
-public:
-    Number(){
-        number1=0;
-        number2=0;
-        number3=0;
-        number4=0;
-        number5=0;
-    }
-    void setNumber1(int x1){
-        number1 = x1;
-    }
-    void setNumber2(int x2){
-        number2 = x2;
-    }
-    void setNumber3(int x3){
-        number3 = x3;
-    }
-    void setNumber4(int x4){
-        number4 = x4;
-    }
-    void setNumber5(int x5){
-        number5 = x5;
-    }
-    int getNumber1(){
-        return number1;
-    }
-    int getNumber2(){
-        return number2;
-    }
-    int getNumber3(){
-        return number3;
-    }
-    int getNumber4(){
-        return number4;
-    }
-    int getNumber5(){
-        return number5;
-    }
-};
 class Letters:public Number{
 private:
     string color1, color2, color3, color4, color5;
@@ -194,6 +153,7 @@ public:
         return color5;
     }
 };
+
 class Level3:public Letters{
 private:
     string guess1, guess2, guess3, guess4, guess5;
@@ -206,19 +166,19 @@ public:
         guess5 = "";
     }
     void setGuess1(string g1){
-        guess1 = g1;
+        this->guess1 = g1;
     }
     void setGuess2(string g2){
-        guess2 = g2;
+        this->guess2 = g2;
     }
     void setGuess3(string g3){
-        guess3 = g3;
+        this->guess3 = g3;
     }
     void setGuess4(string g4){
-        guess4 = g4;
+        this->guess4 = g4;
     }
     void setGuess5(string g5){
-        guess5 = g5;
+        this->guess5 = g5;
     }
     string getGuess1(){
         return guess1;
@@ -320,6 +280,7 @@ int main(int argc, char** argv) {
                     case '3':
                     {
                         cout<<level<<" 3 "<<endl;
+                        int t=0;
                         int n1, n2, n3, n4, n5;
                         string g1, g2, g3, g4, g5;
                         
@@ -351,6 +312,7 @@ int main(int argc, char** argv) {
                         
                         //User guess
                         for (int i=0; i<NUM_GUESS; i++){
+                            t++;
                             cout<<"Please input your guesses: "<<endl;
                             cout<<"Again, the colors are RED, BLUE, GREEN, YELLOW,"
                                     <<"ORANGE, PURPLE, BLACK, WHITE"<<endl;
@@ -413,6 +375,8 @@ int main(int argc, char** argv) {
                                 exit(0);
                             }
                             
+                            timer(t);
+                            cout<<"Number of tries: "<<t<<endl;
                             //Turn ends -> LOSE
                             if (i == NUM_GUESS-1){
                                 cout<<"Sorry you lost! Try Again!"<<endl;
@@ -426,6 +390,7 @@ int main(int argc, char** argv) {
                     case '4':
                     {
                         cout<<level<<" 4 "<<endl;
+                        int t=0;
                         int n1, n2, n3, n4, n5;
                         string g1, g2, g3, g4, g5;
                         
@@ -457,6 +422,7 @@ int main(int argc, char** argv) {
                         
                         //User guess
                         for (int i=0; i<NUM_GUESS; i++){
+                            t++;
                             cout<<"Please input your guesses: "<<endl;
                             cout<<"Again, the colors are RED, BLUE, GREEN, YELLOW,"
                                     <<"ORANGE, PURPLE, BLACK, WHITE"<<endl;
@@ -519,6 +485,8 @@ int main(int argc, char** argv) {
                                 exit(0);
                             }
                             
+                            timer(t);
+                            cout<<"Number of tries: "<<t<<endl;
                             //Turn ends -> LOSE
                             if (i == NUM_GUESS-1){
                                 cout<<"Sorry you lost! Try Again!"<<endl;
