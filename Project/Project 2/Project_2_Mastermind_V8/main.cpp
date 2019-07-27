@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Minkyu R. Park
- * Created on July 17, 2019, 08:30 PM
+ * Created on July 26, 2019, 08:30 PM
  * Purpose:  Project 2: Mastermind V8
  */
 
